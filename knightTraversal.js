@@ -1,6 +1,44 @@
-function knightMoves(start, end){
-    let queue = [];
-    validMove(start);
+function knightMoves(start, end) {
+    const queue = [];
+    const visited = [];
+
+    // store: [position, moves]
+    queue.push([start, 0]);
+    visited.push(start);
+
+    while (queue.length > 0) {
+        const [current, count] = queue.shift();
+
+        // reached target
+        if (current[0] === end[0] && current[1] === end[1]) {
+            return count;
+        }
+
+        const moves = validMove(current);
+
+        for (let i = 0; i < moves.length; i++) {
+            const nextMove = moves[i];
+
+            // check if already visited
+            let alreadyVisited = false;
+
+            for (let j = 0; j < visited.length; j++) {
+                if (
+                    visited[j][0] === nextMove[0] &&
+                    visited[j][1] === nextMove[1]
+                ) {
+                    alreadyVisited = true;
+                    break;
+                }
+            }
+
+            // add new positions
+            if (!alreadyVisited) {
+                visited.push(nextMove);
+                queue.push([nextMove, count + 1]);
+            }
+        }
+    }
 }
 
 function validMove(arr){
@@ -30,5 +68,4 @@ function validMove(arr){
     return moves;
 }
 
-
-console.log(validMove([7,7]));
+console.log(knightMoves([0, 0], [1, 0]));
