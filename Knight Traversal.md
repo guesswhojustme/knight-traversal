@@ -1,11 +1,3 @@
-# knight-traversal
-knight traversal project
-
-Instructions: 
-https://www.theodinproject.com/lessons/javascript-knights-travails#project-solution
-
-wasnt able to solve the problem but I was close to solving it. I wouldve able to solve it if I understood what was the role of the BFS in this problem.
-
 **understanding the problem:** 
  the goal is to traverse through the graph which is the chessboard, and find the shortest route between two nodes (starting and ending positions)
   -where start and end is the coordinate of the board (e.g. [0, 1] and [0, 0])
